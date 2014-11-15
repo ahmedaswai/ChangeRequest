@@ -39,12 +39,18 @@ var loadEmployeeData=function(refreshLists){
 var sumbitForm=function(){
 	var params={};
 	params["submmitterName"]=$("#EmployeeName").val();
-	params["submmitterName"]=$("#EmployeeName").val();
+	params["EmailAddress"]=$("#EmailAddress").val();
+	params["DepartmentName"]=$("#DepartmentName").val();
+	$.post('/cr/submitcr', params, function(data, textStatus, xhr) {
+		console.log(textStatus);
+	});
 	
 
 }
 $(document).ready(function(){
 	createBasicDataLists(refreshActions);
 	loadEmployeeData(refreshActions);
-
+    $("#submitButton").click(function(event) {
+    	sumbitForm();
+    });
 });

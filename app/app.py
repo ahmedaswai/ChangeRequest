@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify,request
 
 from cr.model.entity.basicdata import *
 from cr.controllers.config import *
@@ -23,6 +23,11 @@ def load_data():
     json_results['pirority']=[{'recid': result.recId, 'name': result.name} for result in CrPirority.query.all()]
     json_results['decisions']=[{'recid': result.recId, 'name': result.name} for result in CrDecision.query.all()]
     return jsonify(data=json_results)
+
+@app.route('/cr/submitcr',methods=['POST'])
+def submit_form():
+    print request.form
+    return "OK"
 
 @app.route('/cr/loadEmpApp/<int:emp_id>', methods=['GET'])
 def get_emp_apps(emp_id):

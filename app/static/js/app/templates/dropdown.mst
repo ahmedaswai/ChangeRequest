@@ -1,0 +1,12 @@
+<label>{{name}}</label>
+<div class="ui selection dropdown">
+<input type="hidden" name={{name}}>
+<div class="default text">{{default}}</div>
+<i class="dropdown icon"></i>
+<div class="menu">
+{{#items}}
+
+<div class="item" data-value="{{recid}}">{{name}}</div>
+{{/items}}
+</div>
+</div>

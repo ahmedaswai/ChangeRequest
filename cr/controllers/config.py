@@ -9,7 +9,7 @@ class Config:
         self.app = Flask(name)
         self.db = SQLAlchemy(self.app)
         pm.install_as_MySQLdb()
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/shuracr'
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/shuracr'
         self.db.init_app(self.app)
     def get_current_db(self):
 

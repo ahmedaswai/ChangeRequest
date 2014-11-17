@@ -19,9 +19,9 @@ def apps_category():
 @app.route('/cr/loadAllData', methods=['GET'])
 def load_data():
     json_results=dict()
-    json_results ['types']= [{'recid': result.recId, 'name': result.name} for result in CrType.query.all()]
-    json_results['pirority']=[{'recid': result.recId, 'name': result.name} for result in CrPirority.query.all()]
-    json_results['decisions']=[{'recid': result.recId, 'name': result.name} for result in CrDecision.query.all()]
+    json_results ['types']= [{'recId': result.recId, 'name': result.name} for result in CrType.query.all()]
+    json_results['pirority']=[{'recId': result.recId, 'name': result.name} for result in CrPirority.query.all()]
+    json_results['decisions']=[{'recId': result.recId, 'name': result.name} for result in CrDecision.query.all()]
     return jsonify(data=json_results)
 
 @app.route('/cr/submitcr',methods=['POST'])

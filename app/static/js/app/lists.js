@@ -1,5 +1,5 @@
 
-var creator_form={ 
+var cr_frm={ 
 	
 	frm_data: {}
 	,init:function(){
@@ -7,7 +7,7 @@ var creator_form={
 			var selText = $(this).text();
 			var value= $(this).data("value");
 			var key=$(this).parents('ul').attr("id");
-			creator_form.frm_data[key]=value;
+			cr_frm.frm_data[key]=value;
 		});
 	}
 	,loadLists:function(lst){
@@ -17,8 +17,8 @@ var creator_form={
 	},
 	createBasicDataLists:function(){
 		$.getJSON('/cr/loadAllData', function(json, textStatus) {
-			$(creator_form.loadLists(json.data.pirority)).appendTo("#Pirority");
-			$(creator_form.loadLists(json.data.types)).appendTo("#ChangeType");
+			$(cr_frm.loadLists(json.data.pirority)).appendTo("#Pirority");
+			$(cr_frm.loadLists(json.data.types)).appendTo("#ChangeType");
 		});
 	},
 	refreshActions:function(){
@@ -27,7 +27,7 @@ var creator_form={
 			var selText = $(this).text();
 			var value= $(this).data("value");
 			var key=$(this).parents('ul').attr("id");
-			creator_form.frm_data[key]=value;
+			cr_frm.frm_data[key]=value;
 			$(this).parents('.btn-group').find('.dropdown-toggle').html(selText+' <span class="caret"></span>');
 
 		});
@@ -40,40 +40,58 @@ var creator_form={
 			$.each(json.data.apps, function(index, val) {
 				apps.push($.parseJSON(val.app));
 			});
-			$("#EmployeeName").val(person["name"]);
+			$("#EmployeeName").val(person.name);
 			$("#EmployeeName").data("EmployeeId",person.person_id);
 			$("#EmailAddress").val(person.email_address);
 			$("#PhoneNumber").val(person.phone_number);
 			$("#DepartmentName").val(person.department_name);
-			$(creator_form.loadLists(apps)).appendTo("#Apps");
+			$(cr_frm.loadLists(apps)).appendTo("#Apps");
 			refreshLists();
 
 		});
 	},
 	sumbitForm:function(){
 		
-		creator_form.getFormData();
-		$.post('/cr/submitcr', creator_form.frm_data, function(data, textStatus, xhr) {
-			console.log(textStatus);
-		});
+		if(cr_frm.validateInputs()){
+			$.post('/cr/submitcr', cr_frm.frm_data, function(data, textStatus, xhr) {
+				console.log(textStatus);
+			});
+
+		}
+		else{
+			tools.warningAlert("#alert_placeholder","Kindly Fill The Requested Data");
+		}
+		
+		
 
 
 	}
 	,getFormData:function(){
 		
-		creator_form.frm_data["submmitterName"]=$("#EmployeeName").val();
-		creator_form.frm_data["EmailAddress"]=$("#EmailAddress").val();
-		creator_form.frm_data["DepartmentName"]=$("#DepartmentName").val();
-		creator_form.frm_data["PhoneNumber"]=$("#PhoneNumber").val();
-		creator_form.frm_data["Reason"]=$("#Reason").val();
-		creator_form.frm_data["DescChange"]=$("#DescChange").val();
-		creator_form.frm_data["Comments"]=$("#Comments").val();
-		creator_form.frm_data["PersonId"]=$("#EmployeeName").data("EmployeeId");
-		console.log(creator_form.frm_data);
+		cr_frm.frm_data.submmitterName=$("#EmployeeName").val();
+		cr_frm.frm_data.EmailAddress=$("#EmailAddress").val();
+		cr_frm.frm_dataDepartmentName=$("#DepartmentName").val();
+		cr_frm.frm_data.PhoneNumber=$("#PhoneNumber").val();
+		cr_frm.frm_data.Reason=$("#Reason").val();
+		cr_frm.frm_data.DescChange=$("#DescChange").val();
+		cr_frm.frm_data.Comments=$("#Comments").val();
+		cr_frm.frm_data.PersonId=$("#EmployeeName").data("EmployeeId");
+		console.log(this.frm_data);
+	}
+	,validateInputs:function(){
+		cr_frm.getFormData();
+		if(cr_frm.frm_data.Reason===""||cr_frm.frm_data.Pirority==undefined
+			  ||cr_frm.frm_data.ChangeType==undefined||cr_frm.frm_data.Apps==undefined){
+			console.log("Checking Failed");
+			return false;
+		}
+			console.log("Checking Succeded");
+		return true;
+
 	}
 };
 $(document).ready(function(){
-	var creator=creator_form;
+	var creator=cr_frm;
 	creator.createBasicDataLists();
 	creator.loadEmployeeData(creator.refreshActions);
 	$("#submitButton").click(function(event) {

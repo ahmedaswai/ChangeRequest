@@ -27,34 +27,38 @@
             <div class="form-group">
               <label class="col-sm-2 control-label" for="textinput">CR#</label>
               <div class="col-sm-4">
-                <input type="text" placeholder="Change Request Number" class="form-control">
+                <input type="text" id="CRCode" placeholder="Change Request Number" class="form-control">
               </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" >
+             <div id="AppsContainer" class="Mandatory">
               <label class="col-sm-2 control-label" for="textinput">Application Name</label>
               <div class="col-sm-4">
                <div class="btn-group">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Application Name<span class="caret"></span></a>
                 <ul id="Apps"class="dropdown-menu"> </ul>
               </div>
-               </div>
-              <div class="col-sm-2">
-                <label class="col-sm-2 control-label" for="textinput">Date Submitted</label>
-              </div>
-              <div class="col-sm-4">
-                <input type="text" placeholder="Date Submitted" class="form-control">
               </div>
             </div>
-            <div class="form-group">
+            <div class="col-sm-2">
+              <label class="col-sm-2 control-label" for="textinput">Date Submitted</label>
+            </div>
+            <div class="col-sm-4">
+              <input type="text" placeholder="Date Submitted" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <div id="ChangeTypeContainer" class="Mandatory">
               <label class="col-sm-2 control-label" for="textinput">Change Type</label>
               <div class="col-sm-4">
                <div class="btn-group">
                 <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Change Type<span class="caret"></span></a>
                 <ul id="ChangeType"class="dropdown-menu"> </ul>
-
               </div>
             </div>
+          </div>
+          <div id="PirorityContainer" class="Mandatory">
             <label class="col-sm-2 control-label" for="textinput">Pirority</label>
             <div class="col-sm-4">
               <div class="btn-group">
@@ -62,63 +66,63 @@
                 <ul id="Pirority" class="dropdown-menu"></ul>
               </div>
             </div>
+          </div>
+        </div>
 
+        <div class="form-group">
+          <label class="col-sm-2 control-label " for="textinput">Employee Name</label>
+          <div class="col-sm-4">
+            <input type="text"  id="EmployeeName" placeholder="Employee Name" class="form-control disabled" disabled="disabled">
+          </div>
+          <label class="col-sm-2 control-label " for="textinput">Email Address</label>
+          <div class="col-sm-4">
+            <input type="text" id="EmailAddress" placeholder="Email Address" class="form-control disabled" disabled="disabled">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label " for="textinput">Phone Number</label>
+          <div class="col-sm-4">
+            <input type="text" id="PhoneNumber" placeholder="Phone Number" class="form-control disabled" disabled="disabled">
           </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label " for="textinput">Employee Name</label>
-            <div class="col-sm-4">
-              <input type="text"  id="EmployeeName" placeholder="Employee Name" class="form-control disabled" disabled="disabled">
-            </div>
-            <label class="col-sm-2 control-label " for="textinput">Email Address</label>
-            <div class="col-sm-4">
-              <input type="text" id="EmailAddress" placeholder="Email Address" class="form-control disabled" disabled="disabled">
-            </div>
+          <label class="col-sm-2 control-label " for="textinput">Department Name</label>
+          <div class="col-sm-4">
+            <input type="text" id="DepartmentName" placeholder="Department Name" class="form-control disabled" disabled="disabled">
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label " for="textinput">Phone Number</label>
-            <div class="col-sm-4">
-              <input type="text" id="PhoneNumber" placeholder="Phone Number" class="form-control disabled" disabled="disabled">
-            </div>
-
-            <label class="col-sm-2 control-label " for="textinput">Department Name</label>
-            <div class="col-sm-4">
-              <input type="text" id="DepartmentName" placeholder="Department Name" class="form-control disabled" disabled="disabled">
-            </div>
+        </div>
+        <div class="form-group Mandatory" id="ReasonContainer" >
+          <label class="col-sm-2  control-label" for="textinput">Reason</label>
+          <div class="col-sm-10">
+            <input type="text" id="Reason" placeholder="Reason" class="form-control">
           </div>
-          <div class="form-group">
-            <label class="col-sm-2  control-label" for="textinput">Reason</label>
-            <div class="col-sm-10">
-              <input type="text" id="Reason" placeholder="Reason" class="form-control">
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="textinput">Description of the change</label>
+          <div class="col-sm-10">
+            <textarea id="DescChange" placeholder="Description of the change" class="form-control"></textarea>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Description of the change</label>
-            <div class="col-sm-10">
-              <textarea id="DescChange" placeholder="Description of the change" class="form-control"></textarea>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="textinput">Comments</label>
+          <div class="col-sm-10">
+            <textarea id="Comments" placeholder="Comments " class="form-control"></textarea>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="textinput">Comments</label>
-            <div class="col-sm-10">
-              <textarea id="Comments" placeholder="Comments " class="form-control"></textarea>
-            </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <button  id="submitButton"type="button" class="btn btn-primary btn-lg">Submit Request </button>
           </div>
-          <div class="form-group">
-            <div class="col-sm-4">
-              <button id="submitButton" type="button" class="btn btn-primary btn-lg">Submit Request </button>
-            </div>
-            <div class="col-sm-4">
-              <button id="clearButton" type="button" class="btn btn-danger btn-lg">Cancel Request </button>
-            </div>
+          <div class="col-sm-4">
+            <button id="clearButton" type="button" class="btn btn-danger btn-lg">Cancel Request </button>
           </div>
         </div>
       </div>
+    </div>
 
-      <script src="/static/js/lib/jquery.min.1.1.js"></script>
-      <script src="/static/js/lib/bootstrap.min.js"></script>
-      	<script type="text/javascript" src="/static/js/app/tools.js"></script> 
-      <script type="text/javascript" src="/static/js/app/lists.js"></script> 	
+    <script src="/static/js/lib/jquery.min.1.1.js"></script>
+    <script src="/static/js/lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/js/app/tools.js"></script> 
+    <script type="text/javascript" src="/static/js/app/lists.js"></script> 	
 
-    </body>
-    </html>
+  </body>
+  </html>

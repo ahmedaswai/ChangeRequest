@@ -61,6 +61,9 @@ class EmployeeAppAuthorization(db.Model, JsonSerializer):
     app = relationship("App",backref=backref('App', uselist=False))
 
 
+    
+
+
 
 
 

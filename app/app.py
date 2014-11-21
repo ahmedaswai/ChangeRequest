@@ -26,8 +26,8 @@ def load_data():
 
 @app.route('/cr/submitcr',methods=['POST'])
 def submit_form():
-    print request.form
-    return "OK"
+    return BasicDataDao().insert_new_cr(request.form)
+
 
 @app.route('/cr/loadEmpApp/<int:emp_id>', methods=['GET'])
 def get_emp_apps(emp_id):

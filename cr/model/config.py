@@ -3,6 +3,7 @@ from flask import Flask
 import pymysql as pm
 from flask.ext.sqlalchemy import SQLAlchemy
 
+
 class Config:
 
     def __init__(self,name="CR"):
@@ -20,6 +21,7 @@ class Config:
 
 
 
+db=Config().get_current_db()
 
 
 

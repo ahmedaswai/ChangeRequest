@@ -1,7 +1,8 @@
 
 from basicdata import *
 from sqlalchemy import UnicodeText
-db = Config().get_current_db()
+from cr.model.config import db
+
 
 class CrInfo(db.Model, JsonSerializer):
     __tablename__ = 'cr_info'
@@ -18,11 +19,11 @@ class CrInfo(db.Model, JsonSerializer):
 
 
     cr_type = relationship(CrType,backref=backref('cr_type', uselist=False))
-    cr_app = relationship(App,backref=backref('app', uselist=False))
-    pirority = relationship(CrPirority,backref=backref('pirority', uselist=False))
+    cr_app = relationship(App,backref=backref('cr_app', uselist=False))
+    pirority = relationship(CrPirority,backref=backref('cr_pirority', uselist=False))
 
     description=db.Column(UnicodeText(400,convert_unicode=False))
-    reason=submitter_dep_name=db.Column(UnicodeText(250,convert_unicode=False))
+    reason=db.Column(UnicodeText(250,convert_unicode=False))
     comments=db.Column(UnicodeText(400,convert_unicode=False))
     date_submitted_greg=db.Column(db.Date)
     data_submitted_hijri=db.Column(db.BigInteger)

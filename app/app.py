@@ -1,7 +1,7 @@
 from flask import jsonify,request
 
 from cr.model.entity.basicdata import *
-from cr.controllers.config import *
+from cr.model.config import *
 from cr.model.dao.basic_dao import BasicDataDao
 
 app = Config().get_current_app()

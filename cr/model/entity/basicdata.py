@@ -1,11 +1,7 @@
 from sqlalchemy.orm import relationship, backref
 
 from cr.utils.json_utils import JsonSerializer
-from cr.controllers.config import Config
-
-
-db = Config().get_current_db()
-
+from cr.model.config import  db
 
 class AppCategory(db.Model, JsonSerializer):
     __tablename__ = 'app_category'
@@ -59,6 +55,9 @@ class EmployeeAppAuthorization(db.Model, JsonSerializer):
     app_id = db.Column(db.Integer, db.ForeignKey('app.recId'))
     person = relationship("EmployeeView",backref=backref('empView', uselist=False))
     app = relationship("App",backref=backref('App', uselist=False))
+
+
+
 
 
     

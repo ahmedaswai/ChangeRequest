@@ -26,7 +26,7 @@ def load_data():
 
 @app.route('/cr/submitcr',methods=['POST'])
 def submit_form():
-    return BasicDataDao().insert_new_cr(request.form)
+    return jsonify(response=BasicDataDao().insert_new_cr(request.form))
 
 
 @app.route('/cr/loadEmpApp/<int:emp_id>', methods=['GET'])
